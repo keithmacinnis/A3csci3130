@@ -15,17 +15,23 @@ import java.util.Map;
 public class Contact implements Serializable {
 
     public  String uid;
+    public  String businessNumber;
     public  String name;
-    public  String email;
+    public String primaryBusiness;
+    public String address;
+    public String province;
 
     public Contact() {
         // Default constructor required for calls to DataSnapshot.getValue
     }
 
-    public Contact(String uid, String name, String email){
+    public Contact(String uid, String name, String primaryBusiness, String address, String province, String businessNumber){
         this.uid = uid;
         this.name = name;
-        this.email = email;
+        this.businessNumber = businessNumber;
+        this.primaryBusiness = primaryBusiness;
+        this.address = address;
+        this.province = province;
     }
 
     @Exclude
@@ -33,7 +39,10 @@ public class Contact implements Serializable {
         HashMap<String, Object> result = new HashMap<>();
         result.put("uid", uid);
         result.put("name", name);
-        result.put("email", email);
+        result.put("businessNumber", businessNumber);
+        result.put("primaryBusiness", primaryBusiness);
+        result.put("address", address);
+        result.put("province", province);
 
         return result;
     }

@@ -22,7 +22,7 @@ public class DetailViewActivity extends Activity {
 
         if(receivedPersonInfo != null){
             nameField.setText(receivedPersonInfo.name);
-            emailField.setText(receivedPersonInfo.email);
+            emailField.setText(receivedPersonInfo.businessNumber);
         }
     }
 
