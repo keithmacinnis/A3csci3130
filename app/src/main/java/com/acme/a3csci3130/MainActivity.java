@@ -1,8 +1,18 @@
 package com.acme.a3csci3130;
 
+/**
+ * This app does CRUD on a firebase db
+ *
+ *
+ * @author  Keith MacInnis
+ * @since   2018-06-30
+ */
+
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -27,7 +37,7 @@ public class MainActivity extends Activity {
 
         //Set-up Firebase
         appData.firebaseDBInstance = FirebaseDatabase.getInstance();
-        appData.firebaseReference = appData.firebaseDBInstance.getReference("contacts");
+        appData.firebaseReference = appData.firebaseDBInstance.getReference("companies");
 
         //Get the reference to the UI contents
         contactListView = (ListView) findViewById(R.id.listView);
@@ -55,7 +65,8 @@ public class MainActivity extends Activity {
     public void createContactButton(View v)
     {
         Intent intent=new Intent(this, CreateContactAcitivity.class);
-        startActivity(intent);
+        //intent.putExtra("reponseCode","");
+        startActivityForResult(intent,70);
     }
 
     private void showDetailView(Contact person)
@@ -65,6 +76,17 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to   //<--Via the Google Docs Doctumentation
+        if (requestCode == 70) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                Snackbar mySnackbar = Snackbar.make(findViewById(R.id.myCoordinatorLayout), data.getStringExtra("response"), Snackbar.LENGTH_SHORT);
+                mySnackbar.show();
+            }
+        }
+    }
 
 
 }
