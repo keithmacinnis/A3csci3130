@@ -2,15 +2,45 @@
   "rules": {
     ".read": "true",
     ".write": "true",
-    "contacts": {
-            "$contact": {
-                "name": {
-                    ".validate": "newData.isString() && newData.val().length < 50"
-                },
-                "email": {
-                    ".validate": "newData.isString() && newData.val().matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$/i)"
-                }
-            }
+    "companies": {
+      "$uid": {
+        ".validate": "newData.hasChildren(['businessNumber', 'name', 'primaryBusiness'])",
+        "name": {
+          ".validate": "newData.isString() && newData.val().length < 49 && newData.val().length > 1"
+        },
+        "businessNumber": {
+          ".validate": "newData.val() >=100000000 && newData.val() <=999999999"
+        },
+        "primaryBusiness": {
+          ".validate": "newData.isString() && (
+          newData.val() == 'Fisher' ||
+          newData.val() == 'Distributor' ||
+          newData.val() == 'Processor' ||
+          newData.val() == 'Fish Monger'
+          )"
+        },
+        "address": {
+          ".validate": "newData.isString() && newData.val().length < 51 "
+        },
+        "province": {
+          ".validate": "newData.isString() && (
+          newData.val() == 'NS' ||
+          newData.val() == 'AB' ||
+          newData.val() == 'BC' ||
+          newData.val() == 'NB' ||
+          newData.val() == 'NL' ||
+          newData.val() == 'NT' ||
+          newData.val() == 'NU' ||
+          newData.val() == 'ON' ||
+          newData.val() == 'PE' ||
+          newData.val() == 'QC' ||
+          newData.val() == 'SK' ||
+          newData.val() == 'YK'
+          )"
         }
+
+      }
+    }
   }
 }
+

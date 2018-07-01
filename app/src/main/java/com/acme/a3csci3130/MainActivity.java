@@ -4,6 +4,8 @@ package com.acme.a3csci3130;
  * This app does CRUD on a firebase db
  *
  *
+ *
+ *
  * @author  Keith MacInnis
  * @since   2018-06-30
  */
@@ -73,13 +75,13 @@ public class MainActivity extends Activity {
     {
         Intent intent = new Intent(this, DetailViewActivity.class);
         intent.putExtra("Contact", person);
-        startActivity(intent);
+        startActivityForResult(intent,71);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // Check which request we're responding to   //<--Via the Google Docs Doctumentation
-        if (requestCode == 70) {
+        // Check which request we're responding to   //(Google Docs)
+        if (requestCode == 70 || requestCode == 71  ) {
             // Make sure the request was successful
             if (resultCode == RESULT_OK) {
                 Snackbar mySnackbar = Snackbar.make(findViewById(R.id.myCoordinatorLayout), data.getStringExtra("response"), Snackbar.LENGTH_SHORT);
@@ -87,6 +89,4 @@ public class MainActivity extends Activity {
             }
         }
     }
-
-
 }

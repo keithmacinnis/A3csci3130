@@ -15,7 +15,7 @@ import java.util.Map;
 public class Contact implements Serializable {
 
     public String uid;
-    public String businessNumber;
+    public int businessNumber;
     public String name;
     public String primaryBusiness;
     public String address;
@@ -25,7 +25,7 @@ public class Contact implements Serializable {
         // Default constructor required for calls to DataSnapshot.getValue
     }
 
-    public Contact(String uid, String name, String primaryBusiness, String address, String province, String businessNumber){
+    public Contact(String uid, String name, String primaryBusiness, String address, String province, Integer businessNumber){
         this.uid = uid;
         this.name = name;
         this.businessNumber = businessNumber;

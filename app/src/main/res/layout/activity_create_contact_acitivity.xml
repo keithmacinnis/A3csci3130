@@ -37,7 +37,7 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="8dp" />
-    <EditText
+    <Spinner
         android:id="@+id/primaryBusiness"
         android:layout_width="395dp"
         android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginStart="8dp" />
-    <EditText
+    <Spinner
         android:id="@+id/province"
         android:layout_width="395dp"
         android:layout_height="wrap_content"
